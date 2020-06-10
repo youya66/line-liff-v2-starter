@@ -103,6 +103,18 @@ function displayIsInClientInfo() {
 * Register event handlers for the buttons displayed in the app
 */
 function registerButtonHandlers() {
+    document.getElementById('shareButton').addEventListener('click', function(){
+        navigator.share({
+            title: document.title,
+            text: 'Hello World',
+            url: 'https://mewebsite.com',
+        })
+        .then(() => {
+            console.log('Share completed successfuly')
+        })
+        .catch((error) => { console.log(`share failed: ${error}`) });
+    })
+
     // openWindow call
     document.getElementById('openWindowButton').addEventListener('click', function() {
         liff.openWindow({
